@@ -1,0 +1,852 @@
+/* -------------------- General Styling -------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e8e8e8 !important; /* #e8e8e8, #EaF2FF*/
+    color: #333;
+    
+}
+
+/* -------------------- Fixed Transparent Navbar -------------------- */
+.navbar {
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 0.4s ease-in-out;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-brand {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.logo {
+    height: 45px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff6600;
+}
+
+/* Underline effect on hover */
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px; /* Adjust for proper spacing */
+    width: 0;
+    height: 2px;
+    background-color: #ff6600;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+/* Expand underline on hover */
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+/* -------------------- Fix Navbar Overlapping Content -------------------- */
+body {
+    padding-top: 70px; /* Adjust to navbar height */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+}
+
+/* -------------------- Hero Section -------------------- */
+.hero {
+    background: url('house-bg.jpg') no-repeat center center/cover;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+/* -------------------- Buttons -------------------- */
+.btn-primary {
+    background-color: #ff6600;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #cc5500;
+    transform: scale(1.05);
+}
+
+/* From Get in Touch Buttons*/
+.cta {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    padding-right: 15px;
+    text-transform: uppercase;
+  }
+  
+  .cta svg {
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+  
+  .cta:hover svg {
+    transform: translateX(0);
+  }
+  
+  .cta:active svg {
+    transform: scale(0.9);
+  }
+  
+  .hover-underline-animation {
+    position: relative;
+    color: black;
+    padding-bottom: 20px;
+  }
+  
+  .hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+
+/* -------------------- Featured Properties -------------------- */
+/* .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+} */
+.btn-dark {
+    margin-top: auto; /* Pushes the button down */
+}
+
+
+.card img {
+    height: 220px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .btn-dark {
+    transition: 0.3s;
+    background-color: #012c58;
+}
+
+.card .btn-dark:hover {
+    background-color: #84b4e5;
+    border-color: #000000;
+}
+
+/* -------------------- Why Choose Us? Section -------------------- */
+.card-title {
+    color: #262626;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.small-desc {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5em;
+    color: #452c2c; /*#452c2c*/
+    text-align: center;
+}
+
+.go-corner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #6293c8, #384c6c);
+    border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+    margin-top: -4px;
+    margin-right: -4px;
+    color: white;
+    font-family: courier, sans-serif;
+    font-size: 20px;
+}
+
+.card {
+    display: block;
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+    background-color: #f2f8f9;
+    border-radius: 10px;
+    padding: 2em 1.2em;
+    margin: 12px auto;
+    text-decoration: none;
+    z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Background effect */
+.card:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -16px;
+    background: linear-gradient(135deg, #364a60, #384c6c);
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: transform 0.35s ease-out;
+}
+
+/* Hover effect */
+.card:hover:before {
+    transform: scale(28);
+}
+
+.card:hover .small-desc {
+    transition: all 0.5s ease-out;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card:hover .card-title {
+    transition: all 0.5s ease-out;
+    color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+    }
+}
+
+/* Ensure button stays at the bottom */
+.card-body {
+    flex-grow: 1; /* Allows the content to expand */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/* Make sure the button is always visible */
+.card-body .btn-dark {
+    margin-top: auto; /* Pushes the button to the bottom */
+    width: 100%;
+}
+
+/* -------------------- Fix Featured Properties Section -------------------- */
+.property-card .card {
+    height: 100%;
+}
+
+.property-card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* -------------------- Fix Why Choose Us? Section -------------------- */
+.why-choose-us .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.why-choose-us .card {
+    flex: 1;
+    height: 100%; /* Ensures equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* -------------------- Button Styling -------------------- */
+.btn-dark {
+    background-color: #012c58;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn-dark:hover {
+    background-color: #84b4e5;
+    border-color: #000000;
+}
+
+
+/* -------------------- Contact Section -------------------- */
+.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4B0082; 
+}
+
+.contact-info {
+    padding: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.contact-info p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Contact Form */
+.contact-form {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    padding: 40px;
+    border-radius: 8px;
+    color: white;
+}
+
+.form-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.contact-form p {
+    font-size: 14px;
+}
+
+.contact-form .form-control {
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.contact-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-form .btn-dark {
+    background: white;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact-form .btn-dark:hover {
+    background: #000;
+    color: white;
+}
+ /* Contact Form Animation */
+.contact-form {
+    opacity: 0;
+    transform: translateX(50px);
+    animation: fadeInRight 1.2s ease-out forwards;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Form Fields - Fade-in Effect */
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.contact-form input:nth-child(1) { animation-delay: 0.2s; }
+.contact-form input:nth-child(2) { animation-delay: 0.4s; }
+.contact-form input:nth-child(3) { animation-delay: 0.6s; }
+.contact-form textarea { animation-delay: 0.8s; }
+.contact-form button { animation-delay: 1s; }
+
+/* Smooth Button Hover Effect */
+.contact-form button {
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background-color: #ff6600;
+    transform: scale(1.05);
+}
+
+
+/* Contact Details Animation */
+.contact-info {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: fadeInLeft 1.2s ease-out forwards;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Individual Contact Items - Slide-in Effect */
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideIn 1s ease-out forwards;
+}
+
+.contact-item:nth-child(1) { animation-delay: 0.3s; }
+.contact-item:nth-child(2) { animation-delay: 0.6s; }
+.contact-item:nth-child(3) { animation-delay: 0.9s; }
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Submit Button Styling */
+.contact-form button {
+    background-color: #333;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.contact-form button:hover {
+    background-color: #ff6600;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(255, 102, 0, 0.5);
+}
+
+/* Click Effect */
+.contact-form button:active {
+    transform: scale(0.95);
+}
+
+/* Contact Icons */
+.contact-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.2);
+}
+
+/* Thank You Popup */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 350px;
+    max-width: 90%;
+    animation: slideIn 0.4s ease-in-out; /* Slide-in animation */
+}
+
+/* Success Icon */
+.success-icon {
+    font-size: 50px;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* -------------------- About Page -------------------- */
+/*- Hero Section -*/
+.about-hero {
+    position: relative;
+    overflow: hidden;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the container */
+}
+
+.hero-content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.hero-content p {
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+}
+
+.hero-content h1:hover, 
+.hero-content p:hover {
+    transform: scale(1.05);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
+    color: #ff6600;
+}
+/* Glowing Border Animation */
+.card:hover .card-front {
+    /* border: 3px solid #F8FAFC; */
+    box-shadow: 0px 0px 20px rgb(217, 234, 253);
+}
+/* -------------------- Floating Contact Button -------------------- */
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #50B498;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.floating-button img {
+    width: 35px;
+    height: 35px;
+}
+
+.floating-button:hover {
+    transform: scale(1.1);
+    animation: bounce 0.5s infinite alternate;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}
+/* -------------------- Social Media Icons -------------------- */
+.social-icon {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s;
+    text-align: right;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+}
+/* -------------------- Footer -------------------- */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px 0;
+}
+
+/* -------------------- Animations -------------------- */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------- Preloader -------------------- */
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+    transition: opacity 0.5s ease-out;
+}
+
+.preloader-content {
+    text-align: center;
+}
+
+.preloader-logo {
+    width: 120px;
+    height: auto;
+    animation: fadeInZoom 1.5s ease-in-out infinite alternate;
+}
+
+/* Loading Text */
+#loading-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    background: linear-gradient(to right, #ff6600, #ffcc00);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 150px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(to right, #ff6600, #ffcc00);
+    transition: width 0.1s ease-in-out;
+}
+
+/* Fade-in Zoom Animation */
+@keyframes fadeInZoom {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Hide Preloader After Page Loads */
+.hide-preloader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Style Directors Section */
+.director-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #ff6600;
+    transition: transform 0.3s ease-in-out;
+}
+
+.director-img:hover {
+    transform: scale(1.1);
+    border-color: #e65c00;
+}
+
+/* Team Section Styling */
+.team-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ff6600;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-img:hover {
+    transform: scale(1.1);
+    border-color: #e65c00;
+}
+
+/* Testimonial Section */
+.testimonial-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Smooth Fade Effect for Testimonials */
+.carousel-item {
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
