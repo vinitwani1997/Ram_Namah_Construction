@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.png') }}">
+    <!-- AOS Library (Animate on Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Loading..." class="preloader-logo">
+            <p id="loading-text">Loading... 0%</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const loadingText = document.getElementById("loading-text");
+        const progressFill = document.getElementById("progress-fill");
+        const preloader = document.getElementById("preloader");
+    
+        function updateProgress() {
+            if (progress < 100) {
+                progress += Math.floor(Math.random() * 10) + 5;
+                if (progress > 100) progress = 100;
+                loadingText.textContent = `Loading... ${progress}%`;
+                progressFill.style.width = `${progress}%`;
+                setTimeout(updateProgress, 100);
+            } else {
+                preloader.classList.add("hide-preloader");
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 500);  
+            }
+        }
+    
+        window.addEventListener("load", function () {
+            updateProgress();
+        });
+    </script>
+    
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- About Us Hero Section with Video Background -->
+    <section class="about-hero">
+        <div class="video-background">
+            <video autoplay muted loop id="background-video">
+                <source src="{{ url_for('static', filename='background-video.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="container text-center hero-content">
+            <h1>About Us</h1>
+            <p>Committed to Excellence in Real Estate Development</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="container about-content mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 data-aos="fade-up">Ram Namah Construction Pvt. Ltd</h2>
+                <p data-aos="fade-up">Ram Namah Construction Pvt. Ltd is a leading real estate development and construction firm dedicated to creating exceptional living and working spaces that inspire and endure. With years of experience in the industry, we specialize in designing, developing, and building high-quality residential, commercial, and mixed-use properties that redefine modern living.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section with Image -->
+    <section class="container about-content mt-5">
+        <div class="row align-items-center">
+            <!-- Image (Left) & Our Mission (Right) -->
+            <div class="col-md-6 text-center" data-aos="fade-right">
+                <img src="{{ url_for('static', filename='mission-image.png') }}" alt="Our Mission" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <h3>Our Mission</h3>
+                <p>To be the most trusted and innovative real estate developer and builder, known for creating spaces that inspire, connect, and endure for generations.</p>
+            </div>
+        </div>
+    </section>    
+    <section class="container about-content mt-5">
+        <div class="row align-items-center">
+            <!-- Our Expertise (Left) & Image (Right) -->
+            <div class="col-md-6" data-aos="fade-right">
+                <h3>Our Expertise</h3>
+                <p>With years of experience in real estate and construction, we specialize in developing high-quality residential, commercial, and industrial spaces that stand the test of time.</p>
+            </div>
+            <div class="col-md-6 text-center" data-aos="fade-left">
+                <img src="{{ url_for('static', filename='expertise-image.png') }}" alt="Our Expertise" class="img-fluid rounded">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us? Section -->
+    <section class="container text-center mt-5 why-choose-us">
+        <h3>Why Choose Us?</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="go-corner">
+                        <div class="go-arrow">&#8594;</div>
+                    </div>
+                    <h5 class="card-title">Proven Track Record</h5>
+                    <p class="small-desc">We deliver projects on time and within budget.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="go-corner">
+                        <div class="go-arrow">&#8594;</div>
+                    </div>
+                    <h5 class="card-title">Quality Craftsmanship</h5>
+                    <p class="small-desc">We ensure high-quality materials and fine attention to detail.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="go-corner">
+                        <div class="go-arrow">&#8594;</div>
+                    </div>
+                    <h5 class="card-title">Client-Centric Approach</h5>
+                    <p class="small-desc">Our clients are at the heart of every decision we make.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="go-corner">
+                        <div class="go-arrow">&#8594;</div>
+                    </div>
+                    <h5 class="card-title">Innovative Design</h5>
+                    <p class="small-desc">We bring creative and futuristic designs to all our projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+    <!--display directors' details-->     
+    <section class="container mt-5">
+        <h2 class="text-center mb-4">Our Leadership</h2>
+        
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='director1.png') }}" class="director-img" alt="Director 1">
+                <h4>Mr. Abhishek Vaish</h4>
+                <p>Managing Director</p>
+            </div>
+        </div>
+    </section>
+<!------------------------------------------------- future  section -------------------------------------------------->
+    <!--Meet Our Team-->
+    <!-- <section class="container mt-5">
+        <h2 class="text-center mb-4">Meet Our Team</h2>
+        
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <img src="{{ url_for('static', filename='team1.jpg') }}" class="team-img" alt="Team Member 1">
+                <h5>Amit Khanna</h5>
+                <p>Project Manager</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{{ url_for('static', filename='team2.jpg') }}" class="team-img" alt="Team Member 2">
+                <h5>Neha Kapoor</h5>
+                <p>Architect</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{{ url_for('static', filename='team3.jpg') }}" class="team-img" alt="Team Member 3">
+                <h5>Rahul Verma</h5>
+                <p>Senior Engineer</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <img src="{{ url_for('static', filename='team4.jpg') }}" class="team-img" alt="Team Member 4">
+                <h5>Pooja Sharma</h5>
+                <p>Marketing Head</p>
+            </div>
+        </div>
+    </section> -->
+    
+    <!--Testimonials What Our Clients Say-->
+    <!-- <section class="container mt-5">
+        <h2 class="text-center mb-4">What Our Clients Say</h2>
+    
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active text-center">
+                    <p class="testimonial-text">"Amazing experience! Their team built my dream home with perfection."</p>
+                    <h5>- Sanjay Mehta</h5>
+                </div>
+                <div class="carousel-item text-center">
+                    <p class="testimonial-text">"Highly professional and dedicated service. Would recommend 100%!"</p>
+                    <h5>- Priya Sharma</h5>
+                </div>
+                <div class="carousel-item text-center">
+                    <p class="testimonial-text">"Excellent quality and timely delivery of the project. Great work!"</p>
+                    <h5>- Ravi Kumar</h5>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section> -->
+<!----------------------------------------------------------------------------------------------------------------------->   
+    <!-- Call to Action Section -->
+    <section class="container text-center mt-5">
+        <div class="container text-center"></div>
+            <h2>Let's Build Something Extraordinary</h2>
+            <p>Whether you're looking to invest in a new property, build your dream home, or develop a commercial space, Ram Namah Construction Pvt. Ltd is here to bring your vision to life. Contact us today to learn more about our projects and how we can work together to create something extraordinary.</p>
+            <a href="/contact" class="cta">
+                <span class="hover-underline-animation">Get in Touch</span>
+                <svg
+                    id="arrow-horizontal"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="10"
+                    viewBox="0 0 46 16"
+                >
+                    <path
+                        id="Path_10"
+                        data-name="Path 10"
+                        d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                        transform="translate(30)"
+                    ></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Contact Us Button -->
+    <a href="/contact" class="floating-button">
+        <img src="{{ url_for('static', filename='contact-icon.png') }}" alt="Contact">
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white py-3 mt-5">
+        <p>© 2024 RAM NAMAH CONSTRUCTION PVT. LTD. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Library JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+
+</body>
+</html>

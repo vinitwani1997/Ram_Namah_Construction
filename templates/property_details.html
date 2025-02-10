@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RAM NAMAH CONSTRUCTION PVT. LTD.</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.png') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Property Details -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left: Property Image -->
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename=property.image) }}" class="img-fluid rounded" alt="{{ property.name }}">
+            </div>
+            <!-- Right: Property Details -->
+            <div class="col-md-6">
+                <h2>{{ property.name }}</h2>
+                <p><strong>Location:</strong> {{ property.location }}</p>
+                <p><strong>Price:</strong> {{ property.display_price }}</p>
+                <p><strong>Type:</strong> {{ property.type }}</p>
+                <p>{{ property.description }}</p>
+                <a href="/contact" class="btn btn-primary mt-3">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Us Button -->
+    <a href="/contact" class="floating-button">
+        <img src="{{ url_for('static', filename='contact-icon.png') }}" alt="Contact">
+    </a>
+    
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white py-3 mt-5">
+        <p>© 2024 RAM NAMAH CONSTRUCTION PVT. LTD. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

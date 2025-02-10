@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo.png') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Loading..." class="preloader-logo">
+            <p id="loading-text">Loading... 0%</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let progress = 0;
+        const loadingText = document.getElementById("loading-text");
+        const progressFill = document.getElementById("progress-fill");
+        const preloader = document.getElementById("preloader");
+
+        function updateProgress() {
+            if (progress < 100) {
+                progress += Math.floor(Math.random() * 10) + 5;
+                if (progress > 100) progress = 100;
+                loadingText.textContent = `Loading... ${progress}%`;
+                progressFill.style.width = `${progress}%`;
+                setTimeout(updateProgress, 100);
+            } else {
+                preloader.classList.add("hide-preloader");
+                setTimeout(() => {
+                    preloader.style.display = "none";
+                }, 500);
+            }
+        }
+
+        window.addEventListener("load", function () {
+            updateProgress();
+        });
+    </script>
+
+    <!-- Navigation Bar -->
+    {% include 'navbar.html' %}
+
+    <!-- Contact Section -->
+    <section class="contact-section container mt-5">
+        <div class="row align-items-center">
+            <!-- Left Side: Contact Details -->
+            <div class="col-md-6 contact-info">
+                <h3 class="section-title">Contact Us</h3>
+                <p>Give us a call or drop by anytime. We endeavor to answer all inquiries within 24 hours.</p>
+
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='Address-icon.png') }}" alt="Address" class="contact-icon">
+                    <div>
+                        <strong>Our Address:</strong>
+                        <p>112, Lukerganj, Prayagraj, Uttar Pradesh - 211003</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='Mailbox-icon.png') }}" alt="Mailbox" class="contact-icon">
+                    <div>
+                        <strong>Our Mailbox:</strong>
+                        <p>ramnamahconstructions@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <img src="{{ url_for('static', filename='Phone-icon.png') }}" alt="Phone" class="contact-icon">
+                    <div>
+                        <strong>Our Phone:</strong>
+                        <p>+91 9876543210</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="col-md-6 contact-form">
+                <h3 class="form-title">Ready to Get Started?</h3>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                
+                <form id="contactForm">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name *" required>
+                    <input type="number" name="number" class="form-control" placeholder="Your Mobile *" required>
+                    <input type="email" name="email" class="form-control" placeholder="Your Email *" required>
+                    <textarea name="message" class="form-control" placeholder="Message..." rows="5" required></textarea>
+                    <button type="submit" class="btn btn-dark w-100">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thank You Popup Modal -->
+    <div id="thankYouPopup" class="popup-container">
+        <div class="popup-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2>Thank You, <span id="userName"></span>!</h2>
+            <p>Your message has been successfully sent. We will get back to you soon.</p>
+            <button class="btn btn-primary w-100" onclick="closePopup()">Close</button>
+        </div>
+    </div>  
+
+    <!-- Google Map Section -->
+    <section class="container mt-5">
+        <h3 class="text-center mb-4">Our Location</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-responsive">
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12288.096736089662!2d77.2090212!3d28.6139396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d3e85c70f15%3A0x2f6c3c3a46a42d12!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sus!4v1609828878260!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3602.629662389912!2d81.817942!3d25.450641999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDI3JzAyLjMiTiA4McKwNDknMDQuNiJF!5e0!3m2!1sen!2sin!4v1738920539098!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container mt-5 text-center">
+        <h5>Company Registration</h5>
+        <p><strong>CIN Number:</strong> U68200UP2024PTC209354</p>
+        <!-- <p><strong>GST Number:</strong> 09AABCU1234F1Z5</p>
+        <p><strong>Incorporation Date:</strong> January 15, 2024</p> -->
+    </div>  
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white py-3 mt-5">
+        <p>© 2024 RAM NAMAH CONSTRUCTION PVT. LTD. All Rights Reserved.</p>
+        <div>
+            <!-- <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                <img src="{{ url_for('static', filename='linkedin-icon.png') }}" alt="LinkedIn" width="30">
+            </a> -->
+            <a href="https://www.instagram.com/invites/contact/?igsh=dv4rd43woflq&utm_content=wvvm0a1" target="_blank" class="social-icon">
+                <img src="{{ url_for('static', filename='instagram-icon.png') }}" alt="Instagram" width="30">
+            </a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AJAX Form Submission + Thank You Popup -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("thankYouPopup").style.display = "none"; // Ensure popup is hidden when page loads
+        });
+    
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents page reload
+    
+            var formData = new FormData(this);
+    
+            fetch("/send-message", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("userName").innerText = formData.get("name") || "Guest"; // Avoid empty name issue
+                    showPopup();
+                    this.reset(); // Reset form after submission
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    
+        function showPopup() {
+            document.getElementById("thankYouPopup").style.display = "flex";
+            document.getElementById("loadingSpinner").style.display = "block";
+            document.getElementById("thankYouMessage").style.display = "none";
+    
+            setTimeout(() => {
+                document.getElementById("loadingSpinner").style.display = "none";
+                document.getElementById("thankYouMessage").style.display = "block";
+            }, 2000); // Show spinner for 2 seconds before Thank You message
+    
+            setTimeout(closePopup, 5000); // Auto-close after 5 seconds
+        }
+    
+        function closePopup() {
+            document.getElementById("thankYouPopup").style.display = "none";
+        }
+    </script>
+    
+    
+
+</body>
+</html>
